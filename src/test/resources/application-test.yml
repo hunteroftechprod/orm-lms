@@ -1,0 +1,12 @@
+spring:
+  test:
+    database:
+      replace: NONE
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+lms:
+  demo:
+    admin-password: test-admin
+    teacher-password: test-teacher
+    student-password: test-student

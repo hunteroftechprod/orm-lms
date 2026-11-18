@@ -1,0 +1,21 @@
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/lms}
+    username: ${SPRING_DATASOURCE_USERNAME:lms}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+lms:
+  demo:
+    admin-password: ${LMS_ADMIN_PASSWORD:}
+    teacher-password: ${LMS_TEACHER_PASSWORD:}
+    student-email: ${LMS_STUDENT_EMAIL:student1@example.com}
+    student-password: ${LMS_STUDENT_PASSWORD:}
