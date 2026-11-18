@@ -8,6 +8,7 @@ public class QuizRequest {
     private Long moduleId;
     @NotBlank
     private String title;
+    @jakarta.validation.constraints.Positive
     private Integer timeLimitMinutes;
 
     public Long getModuleId() { return moduleId; }

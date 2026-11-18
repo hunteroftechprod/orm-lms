@@ -78,6 +78,14 @@ class LearningFlowTest extends PostgresContainerTest {
         mvc.perform(get("/api/submissions/{id}", submissionId).header("Authorization", learnerAuth))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.score").value(18));
 
+        mvc.perform(post("/api/quizzes").header("Authorization", TEACHER_AUTH)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"moduleId":%d,"title":"Invalid quiz","timeLimitMinutes":-1}
+                                """.formatted(moduleId)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.details.timeLimitMinutes").exists());
+
         long quizId = create("/api/quizzes", """
                 {"moduleId":%d,"title":"Associations quiz"}
                 """.formatted(moduleId), null).get("id").asLong();
